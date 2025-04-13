@@ -1,0 +1,206 @@
+{
+  "main": {
+    "id": "9f56ffcd6b45a6e1",
+    "type": "split",
+    "children": [
+      {
+        "id": "f96db0f19b3ce604",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "35d9f062cc15ae45",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "00box/photo/D60OG9~(M9U~8H5%ZUZ65MJ_tmb.jpg"
+              },
+              "icon": "lucide-image",
+              "title": "D60OG9~(M9U~8H5%ZUZ65MJ_tmb"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9cc99009a77f4d4e",
+    "type": "split",
+    "children": [
+      {
+        "id": "a81892852cd20236",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "dc03ed6d9690ca39",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "d46238116b68d6c2",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "3e23a5669413a5a2",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "d21d2ec506c327f8",
+    "type": "split",
+    "children": [
+      {
+        "id": "a2a291a3932c72dc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a5af8a87c288e169",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "00box/photo/D60OG9~(M9U~8H5%ZUZ65MJ_tmb.jpg",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "D60OG9~(M9U~8H5%ZUZ65MJ_tmb 的反向链接列表"
+            }
+          },
+          {
+            "id": "e44f69e12733847d",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "00box/photo/D60OG9~(M9U~8H5%ZUZ65MJ_tmb.jpg",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "D60OG9~(M9U~8H5%ZUZ65MJ_tmb 的出链列表"
+            }
+          },
+          {
+            "id": "9ef79b3b1492c467",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "253ebf6613128705",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "00box/photo/D60OG9~(M9U~8H5%ZUZ65MJ_tmb.jpg",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "D60OG9~(M9U~8H5%ZUZ65MJ_tmb 的大纲"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "dc03ed6d9690ca39",
+  "lastOpenFiles": [
+    "00box/photo/image-20250314000426758.png",
+    "00box/photo/image-20250314000413432.png",
+    "00box/photo/image-20250314000305691.png",
+    "00box/photo/image-20250314000254453.png",
+    "00box/photo/image-20250314000242754.png",
+    "00box/photo/image-20250314000227665.png",
+    "00box/photo/image-20250314000023131.png",
+    "00box/photo/image-20250314000007166.png",
+    "00box/photo/{4D79CF41-330B-4DEC-B2C9-1C0B85F6CC94}.png",
+    "00box/photo/{5C17A5B8-4EA1-41C8-8F92-8FE5A6EB759C} 1.png",
+    "00box/photo/{63B42704-E53B-4051-B2F7-58EC9F35C559}.png",
+    "八股基础/网络/2.2 网页显示.md",
+    "八股基础/网络/2.1 TCP IP 网络模型.md",
+    "README.md",
+    "基础算法/leetcode刷题/刷题.md",
+    "基础算法/acwing笔记/备考笔记.md",
+    "基础算法/leetcode刷题",
+    "基础算法/acwing笔记",
+    "八股基础/redis",
+    "八股基础/mysql",
+    "八股基础/系统",
+    "八股基础/网络",
+    "八股基础",
+    "基础算法/acwing笔记/算法基础课（第一章）.md",
+    "基础算法/acwing笔记/算法基础（第二章）.md",
+    "基础算法/acwing笔记/算法基础（第二章）.pdf",
+    "基础算法/acwing笔记/刷题记录2.md",
+    "基础算法/算法基础——贪心.md",
+    "基础算法/acwing笔记/算法基础——贪心.pdf",
+    "基础算法/算法基础——搜索与图论.md",
+    "基础算法/acwing笔记/算法基础——搜索与图论.pdf",
+    "基础算法/算法基础——动态规划.md",
+    "基础算法/acwing笔记/刷题记录.md",
+    "基础算法/acwing笔记/蓝桥基础.md"
+  ]
+}

@@ -71,31 +71,27 @@ public class CommodityDbHelper extends SQLiteOpenHelper {
      * @return 所有的商品列表
      */
     public List<Commodity> readAllCommodities() {
-        List<Commodity> allCommodities = new ArrayList<>();
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("select * from tb_commodity order by price",null);
-        if(cursor.moveToFirst()) {
-            do {
-                String title = cursor.getString(cursor.getColumnIndex("title"));
-                String category = cursor.getString(cursor.getColumnIndex("category"));
-                float price = cursor.getFloat(cursor.getColumnIndex("price"));
-                String phone = cursor.getString(cursor.getColumnIndex("phone"));
-                String description = cursor.getString(cursor.getColumnIndex("description"));
-                byte[] picture = cursor.getBlob(cursor.getColumnIndex("picture"));
-                String stuId = cursor.getString(cursor.getColumnIndex("stuId"));
+        List<Commodity> list = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = null;
+
+        try {
+            cursor = db.query(
+                    "commodity",
+                    new String[]{"id", "title", "category", "price", "phone", "description", "picture", "stuId"},
+                    null, null, null, null, null
+            );
+
+            while (cursor.moveToNext()) {
                 Commodity commodity = new Commodity();
-                commodity.setTitle(title);
-                commodity.setCategory(category);
-                commodity.setPrice(price);
-                commodity.setDescription(description);
-                commodity.setPhone(phone);
-                commodity.setPicture(picture);
-                commodity.setStuId(stuId);
-                allCommodities.add(commodity);
-            }while (cursor.moveToNext());
+                // 解析数据...
+                list.add(commodity);
+            }
+        } finally {
+            if (cursor != null) cursor.close();
+            db.close(); // 确保关闭数据库连接
         }
-        cursor.close();
-        return allCommodities;
+        return list;
     }
 
 

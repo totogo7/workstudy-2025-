@@ -117,3 +117,46 @@ private static <T extends Number> double add(T a, T b) {
 将对象序列化为字节流，将其发送到另一个JVM，然后使用反序列化字节流恢复对象
 - 这可以通过 Java 的 ObjectOutputStream 和ObjectInputStream 来实现。
 
+
+## java集合
+- ArrayList：动态数组
+- LinkedList：双向链表
+- HashMap：键值对
+- HashSet：基于hashmap的set集合
+- TreeMap：基于红黑树的有序map集合
+
+线程安全：
+- vector：动态数组
+- Hashtable：线程安全的哈希表，给每个方法加上ObjectInputStream 来实现。
+
+## list操作
+.remove(index)：删除指定下标的元素
+.add()：添加元素
+
+## Map
+遍历：使用entrySet
+```java
+ for (Map.Entry<String, Integer> entry :map.entrySet()) {
+    System.out.println("Key: " + entry.getKey()+ ", Value: " + entry.getValue());
+}
+```
+解决哈希冲突：
+- 链接法
+- 开放寻址 线性探测
+
+HashMap不是线程安全的：采用数组+链表，多线程会出现数据丢失，链死循环
+put操作过程：
+- 根据要添加的键的哈希码计算位置
+- 检查该位置是否为空，为空就创建一个entry对象来存储键值对
+- 不为空就检查该位置后第一个键值对是否与其相同
+- 如果相同就表明有相同的键，更新最新的值就行
+- 如果不相同，就遍历整个链表查看是否有相同的键
+- 如果找到了就替代
+- 没找到就添加一个新的键值对到链表头部
+- 检查链表长度是否到阈值
+- 检查负载因子是否超阈值（超出阈值就会进行扩容）
+- 扩容
+- 完成添加操作
+
+- 
+

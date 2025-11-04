@@ -158,5 +158,31 @@ put操作过程：
 - 扩容
 - 完成添加操作
 
-- 
+- HashTable，底层原理是数组+链表。线程安全，效率低一点，其内部方法基本都经过synchronized修饰
+## ConcurrentHashMap
+ConcurrentHashMap 是 Java 提供的一个线程安全的哈希表，
+用来在多线程环境下高效地进行键值对存取。
+它是 HashMap 的并发安全版本，相比 Collections.synchronizedMap() 整体加锁的做法，
+ConcurrentHashMap 通过分段锁（JDK7）或CAS+局部同步（JDK8）实现了更高的并发性能。
+底层原理——JDK7
+- 整个 Map 被分成若干个 Segment（分段）；
+- 每个 Segment 类似一个小的 HashMap，有独立的锁；
+- 线程访问不同 Segment 时可以并行进行；
+- 锁粒度比全表锁更细，大大提高并发性能。
+JDK8：
+- 去掉了 Segment，结构更接近 HashMap；
+- 使用 CAS（Compare-And-Swap）无锁操作 来保证并发安全；
+- 当 CAS 失败时，再用 synchronized 锁定单个桶（bin）；
+- 链表长度超过阈值（8）时，自动转换为 红黑树 提高查询性能；
+- 扩容时通过 协作式扩容（多线程一起帮忙迁移数据），提升效率。
+
+CAS + synchronized 如何保证安全？
+以 put 为例：
+- 首先通过 key 计算 hash 定位桶；
+- 如果桶为空，用 CAS（乐观锁） 插入；
+- 如果 CAS 失败，说明有并发冲突：
+- 退化为 synchronized（悲观锁），对该桶加锁；
+- 在锁内遍历链表或红黑树更新；
+- 释放锁，结束操作。
+
 

@@ -185,4 +185,86 @@ CAS + synchronized 如何保证安全？
 - 在锁内遍历链表或红黑树更新；
 - 释放锁，结束操作。
 
+## sleep和wait的区别
+sleep是thread类的静态方法，可以随时调用，且线程只会暂停指定的时间，不会释放锁。
+> sleep会释放cpu时间片
+wait是object的实例方法，调用时线程会释放持有的锁，进入等待状态，当调用notify方法唤醒
+> 线程从 等待（WAIT） 状态恢复到 运行（RUNNING） 状态的核心机制是 通过外部事件触发或资源可用性变化，
+> 比如等待的线程被其他线程对象唤醒，notify()和notifyAll()。
+
+## blocked和waitng
+BLOCKED是锁竞争失败后被被动触发的状态，WAITING是人为的主动触发的状态
+BLCKED的唤醒时自动触发的，而WAITING状态是必须要通过特定的方法来主动唤醒
+
+## 不同线程之间如何通信
+共享变量是最基本的线程间通信方式。多个线程可以访问和修改同一个共享变量，从而实现信息的传递。
+为了保证线程安全，通常需要使用 synchronized 关键字或 volatile 关键字。
+
+## 线程间通信方式有哪些？
+Object 类的 wait()、notify() 和 notifyAll() 方法。
+wait()：使当前线程进入等待状态，直到其他线程调用该对象的 notify() 或 notifyAll() 方法。
+notify()：唤醒在此对象监视器上等待的单个线程。
+notifyAll()：唤醒在此对象监视器上等待的所有线程。
+volatile 关键字。volatile 关键字用于保证变量的可见性
+
+## 多线程安全
+- synchronized关键字:可以使用synchronized关键字来同步代码块或方法，确保同一时刻只有一个线程可以访问这些代码。
+- volatile关键字:volatile关键字用于变量，确保所有线程看到的是该变量的最新值，而不是可能存储在本地寄存器中的副本。
+
+## Java中有哪些常用的锁
+内置锁（synchronized）
+ReentrantLock
+读写锁（ReadWriteLock）
+乐观锁和悲观锁
+自旋锁：CAS
+
+## java并发工具
+CountDownLatch：是一个同步辅助类，它允许一个或多个线程等待其他线程完成操作后再继续执行。
+其核心是通过一个计数器（Counter）实现线程间的协调，常用于多线程任务的分阶段控制或主线程等待多个子线程就绪的场景，核心原理：
+- 初始化计数器：创建 CountDownLatch 时指定一个初始计数值（如 N）。
+- 等待线程阻塞：调用 await() 的线程会被阻塞，直到计数器变为 0。
+- 任务完成通知：其他线程完成任务后调用 countDown()，使计数器减 1。
+- 唤醒等待线程：当计数器减到 0 时，所有等待的线程会被唤醒。
+
+
+CyclicBarrier：CyclicBarrier 允许一组线程互相等待，直到到达一个公共的屏障点。
+当所有线程都到达这个屏障点后，它们可以继续执行后续操作，并且这个屏障可以被重置循环使用。
+
+Semaphore：Semaphore 是一个计数信号量，用于控制同时访问某个共享资源的线程数量。
+ConcurrentHashMap：是一个线程安全的哈希表，它允许多个线程同时进行读操作，在一定程度上支持并发的修改操作，
+
+## synchronized和reentrantlock区别？
+用法不同：synchronized 可用来修饰普通方法、静态方法和代码块，而 ReentrantLock 只能用在代码块上。
+获取锁和释放锁方式不同：synchronized 会自动加锁和释放锁，当进入 synchronized 修饰的代码块之后会自动加锁，当离开 synchronized 的代码段之后会自动释放锁。
+而 ReentrantLock 需要手动加锁和释放锁
+锁类型不同：synchronized 属于非公平锁，而 ReentrantLock 既可以是公平锁也可以是非公平锁。
+底层实现不同：synchronized 是 JVM 层面通过监视器实现的，而 ReentrantLock 是基于 AQS 实现的。
+
+## 怎么理解可重入锁？
+可重入锁是指同一个线程在获取了锁之后，可以再次重复获取该锁而不会造成死锁或其他问题。
+当一个线程持有锁时，如果再次尝试获取该锁，就会成功获取而不会被阻塞。
+ReentrantLock实现可重入锁的机制是基于线程持有锁的计数器。
+- 当一个线程第一次获取锁时，计数器会加1，表示该线程持有了锁。在此之后，如果同一个线程再次获取锁，计数器会再次加1。每次线程成功获取锁时，都会将计数器加1。
+- 当线程释放锁时，计数器会相应地减1。只有当计数器减到0时，锁才会完全释放，其他线程才有机会获取锁。
+
+## 死锁问题
+- 互斥
+- 不可剥夺
+- 请求和保持
+- 循环等待
+
+## 线程池
+- corePoolSize：线程池核心线程数量。
+- maximumPoolSize：限制了线程池能创建的最大线程总数（包括核心线程和非核心线程）
+- keepAliveTime：当线程池中线程的数量大于corePoolSize，并且某个线程的空闲时间超过了keepAliveTime，那么这个线程就会被销毁。
+- unit：就是keepAliveTime时间的单位
+- workQueue：工作队列。当没有空闲的线程执行新任务时，该任务就会被放入工作队列中，等待执行。
+- threadFactory：线程工厂。可以用来给线程取名字等等
+- handler：拒绝策略。
+
+CPU密集型：corePoolSize = CPU核数 + 1
+IO密集型：corePoolSize = CPU核数 x 2
+
+
+
 
